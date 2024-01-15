@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export const Footer = props => (
+export const Footer = (props) => (
   <footer style={{ marginTop: 5 }}>
     <p>
-      Made with ❤️ by{' '}
+      Made with ❤️ by{" "}
       <a
         className="link"
         href="https://nitin-tulswani.surge.sh/"
@@ -13,4 +13,4 @@ export const Footer = props => (
       </a>
     </p>
   </footer>
-)
+);

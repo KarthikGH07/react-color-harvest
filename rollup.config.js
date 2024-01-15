@@ -3,7 +3,7 @@ import { uglify } from "rollup-plugin-uglify";
 import replace from "@rollup/plugin-replace";
 import filesize from "rollup-plugin-filesize";
 
-import pkg from "./package.json" assert {type: "json"};
+import pkg from "./package.json" assert { type: "json" };
 
 const makeExternalPredicate = (externalArr) => {
   if (externalArr.length === 0) {
@@ -27,28 +27,35 @@ const createConfig = ({ output, min = false, env } = {}) => ({
       },
     })
   ),
-external: makeExternalPredicate([
+  external: makeExternalPredicate([
     ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {})
+    ...Object.keys(pkg.peerDependencies || {}),
   ]),
   plugins: [
     filesize(),
-    babel({ plugins: ["@babel/plugin-external-helpers"], babelHelpers: "external" }),
-    env && replace({ "process.env.NODE_ENV": JSON.stringify(env), preventAssignment: true }),
-    min && uglify()
-  ].filter(Boolean)
+    babel({
+      plugins: ["@babel/plugin-external-helpers"],
+      babelHelpers: "external",
+    }),
+    env &&
+      replace({
+        "process.env.NODE_ENV": JSON.stringify(env),
+        preventAssignment: true,
+      }),
+    min && uglify(),
+  ].filter(Boolean),
 });
 
 export default [
   createConfig({
     output: [
       { file: pkg.main, format: "cjs" },
-      { file: pkg.module, format: "es" }
-    ]
+      { file: pkg.module, format: "es" },
+    ],
   }),
   createConfig({
     output: { file: pkg.unpkg, format: "umd" },
     env: "production",
-    min: true
-  })
+    min: true,
+  }),
 ];

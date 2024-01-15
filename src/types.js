@@ -1,9 +1,9 @@
 // @flow
 
-import * as React from 'react'
+import * as React from "react";
 
 // Image input can be a html element (image tag), an image path (remote or local) or a blob url
-export type Image = HTMLElement | string | Blob
+export type Image = HTMLElement | string | Blob;
 
 // ColorExtractor component props
 export type Props = {
@@ -17,5 +17,5 @@ export type Props = {
   src: string,
   // Max color count for amount of colors from which swatches will be generated
   maxColors: number,
-  children?: React.Node
-}
+  children?: React.Node,
+};

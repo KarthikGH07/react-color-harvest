@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
-import { ColorExtractor } from '../../src'
+import { ColorExtractor } from "../../src";
 
-export const Image = props =>
+export const Image = (props) =>
   props.error ? (
     <div className="error-message">
       An error occurred while processing the image.
@@ -13,4 +13,4 @@ export const Image = props =>
         <img src={props.image} />
       </ColorExtractor>
     </div>
-  )
+  );

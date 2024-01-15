@@ -23,7 +23,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "parcel": "^2.0.0",
-    "prettier": "^1.14.2",
+    "prettier": "^3.2.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "rollup": "^4.9.5",
@@ -42,11 +42,12 @@
     "start": "parcel ./public/index.html",
     "build:website": "NODE_ENV=production parcel build ./website/index.js",
     "deploy": "yarn build:website && surge",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier . --write --ignore-unknown"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
-      "prettier --write"
+      "prettier --write --ignore-unknown"
     ]
   }
 }

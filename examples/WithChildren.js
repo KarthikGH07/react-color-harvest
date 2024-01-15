@@ -7,14 +7,14 @@ import {
   IMAGE_STYLES,
   SWATCHES_STYLES,
   Swatches,
-  renderSwatches
+  renderSwatches,
 } from "./utils";
 
 export class WithChildren extends React.Component {
   state = { colors: [] };
 
-  getColors = colors =>
-    this.setState(state => ({ colors: [...state.colors, ...colors] }));
+  getColors = (colors) =>
+    this.setState((state) => ({ colors: [...state.colors, ...colors] }));
 
   render() {
     return (

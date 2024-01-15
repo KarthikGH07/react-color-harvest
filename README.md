@@ -8,7 +8,6 @@
 
 This repository is a fork of the unmaintained https://github.com/nitin42/react-color-extractor repository.
 
-
 ## Use cases
 
 - Design systems

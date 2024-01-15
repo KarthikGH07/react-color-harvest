@@ -1,13 +1,13 @@
-import React from 'react'
-import { Image } from './Image'
-import { Swatches } from './Swatches'
-import { SearchInput } from './SearchInput'
-import { FileInput } from './UploadButton'
-import { Footer } from './Footer'
+import React from "react";
+import { Image } from "./Image";
+import { Swatches } from "./Swatches";
+import { SearchInput } from "./SearchInput";
+import { FileInput } from "./UploadButton";
+import { Footer } from "./Footer";
 
-const IMAGE = 'https://i.imgur.com/OCyjHNF.jpg'
+const IMAGE = "https://i.imgur.com/OCyjHNF.jpg";
 
-const GitHubLink = props => (
+const GitHubLink = (props) => (
   <div style={{ marginTop: 20 }}>
     <a
       className="github-button"
@@ -19,63 +19,63 @@ const GitHubLink = props => (
       Star
     </a>
   </div>
-)
+);
 
-const Heading = props => <h1 className="heading">React Color Extractor</h1>
+const Heading = (props) => <h1 className="heading">React Color Extractor</h1>;
 
 export class App extends React.Component {
   state = {
     image: IMAGE,
     colors: [],
-    hasError: false
-  }
+    hasError: false,
+  };
 
   componentDidMount() {
-    const searchInput = document.getElementById('s-input')
+    const searchInput = document.getElementById("s-input");
 
-    searchInput.focus()
+    searchInput.focus();
 
-    const uploader = document.getElementById('uploader')
-    const button = document.getElementById('file-upload')
+    const uploader = document.getElementById("uploader");
+    const button = document.getElementById("file-upload");
 
-    button.addEventListener('click', e => {
+    button.addEventListener("click", (e) => {
       if (uploader) {
-        uploader.click()
+        uploader.click();
       }
 
-      e.preventDefault()
-    })
+      e.preventDefault();
+    });
   }
 
-  uploadFiles = e => {
+  uploadFiles = (e) => {
     this.setState({
       image: window.URL.createObjectURL(e.target.files[0]),
-      hasError: false
-    })
-  }
+      hasError: false,
+    });
+  };
 
-  getColors = colors => {
-    this.setState(state => ({ colors: [...colors], hasError: false }))
-  }
+  getColors = (colors) => {
+    this.setState((state) => ({ colors: [...colors], hasError: false }));
+  };
 
-  handleImage = e => {
-    this.isResponseOk(e.target.value)
-    this.setState({ image: e.target.value })
-  }
+  handleImage = (e) => {
+    this.isResponseOk(e.target.value);
+    this.setState({ image: e.target.value });
+  };
 
-  isResponseOk = path =>
+  isResponseOk = (path) =>
     fetch(path)
-      .then(
-        res => (res.status === 200 ? this.setState({ hasError: false }) : null)
+      .then((res) =>
+        res.status === 200 ? this.setState({ hasError: false }) : null
       )
-      .catch(err => (err ? this.setState({ hasError: true }) : null))
+      .catch((err) => (err ? this.setState({ hasError: true }) : null));
 
   render() {
     return (
       <div
         className="center-content"
         style={{
-          flexDirection: 'column'
+          flexDirection: "column",
         }}
       >
         <Heading />
@@ -83,10 +83,10 @@ export class App extends React.Component {
           error={this.state.hasError}
           image={this.state.image}
           getColors={this.getColors}
-          onError={error => this.setState({ hasError: true })}
+          onError={(error) => this.setState({ hasError: true })}
         />
         <SearchInput
-          imagePath={this.state.image === IMAGE ? '' : this.state.image}
+          imagePath={this.state.image === IMAGE ? "" : this.state.image}
           handleImage={this.handleImage}
           getColors={this.getColors}
         />
@@ -97,6 +97,6 @@ export class App extends React.Component {
         <GitHubLink />
         <Footer />
       </div>
-    )
+    );
   }
 }

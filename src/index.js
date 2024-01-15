@@ -1,3 +1,3 @@
-import ColorExtractor from './ColorExtractor'
+import ColorExtractor from "./ColorExtractor";
 
-export { ColorExtractor }
+export { ColorExtractor };
