@@ -1,40 +1,40 @@
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import { uglify } from "rollup-plugin-uglify";
-import replace from "rollup-plugin-replace";
+import replace from "@rollup/plugin-replace";
 import filesize from "rollup-plugin-filesize";
 
-import pkg from "./package.json";
+import pkg from "./package.json" assert {type: "json"};
 
-const makeExternalPredicate = externalArr => {
+const makeExternalPredicate = (externalArr) => {
   if (externalArr.length === 0) {
     return () => false;
   }
   const pattern = new RegExp(`^(${externalArr.join("|")})($|/)`);
-  return id => pattern.test(id);
+  return (id) => pattern.test(id);
 };
 
-const ensureArray = maybeArr =>
+const ensureArray = (maybeArr) =>
   Array.isArray(maybeArr) ? maybeArr : [maybeArr];
 
 const createConfig = ({ output, min = false, env } = {}) => ({
   input: "src/index.js",
-  output: ensureArray(output).map(format =>
+  output: ensureArray(output).map((format) =>
     Object.assign({}, format, {
       name: "ReactColorExtractor",
       exports: "named",
       globals: {
-        react: "React"
-      }
+        react: "React",
+      },
     })
   ),
-  external: makeExternalPredicate([
+external: makeExternalPredicate([
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {})
   ]),
   plugins: [
     filesize(),
-    babel({ plugins: ["external-helpers"] }),
-    env && replace({ "process.env.NODE_ENV": JSON.stringify(env) }),
+    babel({ plugins: ["@babel/plugin-external-helpers"], babelHelpers: "external" }),
+    env && replace({ "process.env.NODE_ENV": JSON.stringify(env), preventAssignment: true }),
     min && uglify()
   ].filter(Boolean)
 });

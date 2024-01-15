@@ -5,3 +5,4 @@ public
 build
 dist
 yarn-error.log
+.prepare-cache
