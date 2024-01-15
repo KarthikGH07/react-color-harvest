@@ -20,8 +20,8 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-replace": "^5.0.5",
     "flow-bin": "^0.226.0",
-    "husky": "^1.0.0-rc.13",
-    "lint-staged": "^7.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "parcel": "^2.0.0",
     "prettier": "^1.14.2",
     "react": "^16.4.2",
@@ -41,17 +41,12 @@
     "flow": "flow",
     "start": "parcel ./public/index.html",
     "build:website": "NODE_ENV=production parcel build ./website/index.js",
-    "deploy": "yarn build:website && surge"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "deploy": "yarn build:website && surge",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
-      "prettier --write --no-semi --single-quote",
-      "git add"
+      "prettier --write"
     ]
   }
 }
