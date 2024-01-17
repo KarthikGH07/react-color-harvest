@@ -31,7 +31,7 @@
     "rollup-plugin-uglify": "^6.0.4"
   },
   "dependencies": {
-    "node-vibrant": "^3.0.0"
+    "node-vibrant": "^3.1.6"
   },
   "peerDependencies": {
     "react": "^16.3.2"
