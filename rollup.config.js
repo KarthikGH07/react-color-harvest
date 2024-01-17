@@ -1,7 +1,7 @@
 import babel from "@rollup/plugin-babel";
-import { uglify } from "rollup-plugin-uglify";
 import replace from "@rollup/plugin-replace";
 import filesize from "rollup-plugin-filesize";
+import terser from "@rollup/plugin-terser";
 
 import pkg from "./package.json" assert { type: "json" };
 
@@ -34,15 +34,15 @@ const createConfig = ({ output, min = false, env } = {}) => ({
   plugins: [
     filesize(),
     babel({
-      plugins: ["@babel/plugin-external-helpers"],
-      babelHelpers: "external",
+      babelHelpers: "bundled",
+      exclude: "node_modules/**",
     }),
     env &&
       replace({
         "process.env.NODE_ENV": JSON.stringify(env),
         preventAssignment: true,
       }),
-    min && uglify(),
+    min && terser(),
   ].filter(Boolean),
 });
 

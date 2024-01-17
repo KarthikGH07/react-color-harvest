@@ -19,6 +19,7 @@
     "@babel/preset-react": "^7.23.3",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-terser": "^0.4.4",
     "flow-bin": "^0.226.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
@@ -27,8 +28,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "rollup": "^4.9.5",
-    "rollup-plugin-filesize": "^10.0.0",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup-plugin-filesize": "^10.0.0"
   },
   "dependencies": {
     "node-vibrant": "^3.1.6"
