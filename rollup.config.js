@@ -20,10 +20,11 @@ const createConfig = ({ output, min = false, env } = {}) => ({
   input: "src/index.js",
   output: ensureArray(output).map((format) =>
     Object.assign({}, format, {
-      name: "ReactColorExtractor",
+      name: "ReactColorHarvest",
       exports: "named",
       globals: {
         react: "React",
+        "node-vibrant": "Vibrant",
       },
     })
   ),
