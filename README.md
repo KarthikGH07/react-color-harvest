@@ -1,7 +1,7 @@
 # react-color-harvest
 
 <p align="center">
-  <img src="./assets/Demo.gif" />
+  <img src="https://github.com/nitin42/react-color-extractor/blob/master/assets/Demo.gif" />
 </p>
 
 ## What
