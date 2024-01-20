@@ -1,6 +1,6 @@
 {
   "name": "react-color-harvest",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "A React component which extracts colors from an image",
   "main": "build/react-color-harvest.js",
@@ -9,6 +9,22 @@
   "repository": "https://github.com/KarthikGH07/react-color-harvest",
   "author": "Kartik Hegde <karthikhegde96@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "color",
+    "color-harvest",
+    "color-extractor",
+    "color-picking",
+    "color-analysis",
+    "image-color",
+    "dominant-color",
+    "palette-extraction",
+    "ui-component",
+    "design-tools",
+    "color-picker",
+    "web-design",
+    "image-processing"
+  ],
   "devDependencies": {
     "@babel/core": "^7.23.7",
     "@babel/plugin-external-helpers": "^7.23.3",
